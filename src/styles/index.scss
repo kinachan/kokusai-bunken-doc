@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.content {
+  .toc {
+    line-height: 1.2;
+
+    ul {
+      margin-top: 0.25rem;
+      margin-inline-start: 1rem;
+    }
+  }
+}
+
+.floating-bottom-button {
+  position: fixed !important;
+  bottom: 5%;
+  right: 5%;
+}
+
+.content {
+  overflow-wrap: break-word;
+}
+
+
+.content {
+  h1 {
+    margin: 0;
+    padding: 0.25em;
+    padding-bottom: 0.25em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bulma-info);
+  }
+
+  h2 {
+    padding: 0.25em;
+    margin: 0;
+    border-left: 3px solid var(--bulma-info);
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    padding: 0.25em;
+    background-color: var(--bulma-grey-lighter);
+    border-radius: 10px;
+  }
+
+  h4 {
+    padding-bottom: 0.25em;
+    padding-left: 0.25em;
+    border-left: 3px solid var(--bulma-info);
+  }
+
+  h5 {
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid var(--bulma-info);
+  }
+
+  h6 {
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid var(--bulma-info);
+    border-bottom-style: dotted;
+  }
+
+  
+  .table-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .todo-highlight {
+    font-weight: bolder;
+    font-size: 150%;
+  }
+}
+
+
+.float-ripple-button {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  border-radius: 50%;
+}

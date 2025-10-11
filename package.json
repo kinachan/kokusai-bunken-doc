@@ -1,0 +1,33 @@
+{
+  "name": "document-creator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8325",
+    "build": "yarn run cp && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "cp:pngImg": "cpx \"docs/img/*.png\" public/img/",
+    "cp:jpegImg": "cpx \"docs/img/*.jpeg\" public/img/",
+    "cp:png": "cpx \"docs/*.png\" public/",
+    "cp:jpeg": "cpx \"docs/*.jpeg\" public/",
+    "cp": "yarn run cp:pngImg && yarn run cp:jpegImg && yarn run cp:png && yarn run cp:jpeg"
+  },
+  "dependencies": {
+    "@kinachan/shirayuri": "^0.1.184",
+    "fs": "^0.0.1-security",
+    "mermaid": "^11.6.0",
+    "next": "14.1.4",
+    "path": "^0.12.7",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "cpx": "^1.5.0",
+    "typescript": "^5",
+    "uuid": "^11.0.5"
+  }
+}
