@@ -11,6 +11,8 @@ const files = docs.filter(file => {
 
   const content = fs.readFileSync(pathName, {encoding: 'utf-8'});
   const [title, ...extension] = file.split('.');
+
+  console.log(`[log] create-seacrh-data: ${title}`);
   return {
     id: i.toString(),
     title: title,
