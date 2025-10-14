@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 8325",
-    "build": "yarn run cp && next build",
+    "build": "yarn run cp && yarn run create-file && next build",
     "start": "next start",
     "lint": "next lint",
+    "create-file": "node create-search.js",
     "cp:pngImg": "cpx \"docs/img/*.png\" public/img/",
     "cp:jpegImg": "cpx \"docs/img/*.jpeg\" public/img/",
     "cp:png": "cpx \"docs/*.png\" public/",
@@ -14,8 +15,10 @@
     "cp": "yarn run cp:pngImg && yarn run cp:jpegImg && yarn run cp:png && yarn run cp:jpeg"
   },
   "dependencies": {
-    "@kinachan/shirayuri": "^0.1.184",
+    "@kinachan/shirayuri": "^0.1.285",
     "fs": "^0.0.1-security",
+    "lunr": "^2.3.9",
+    "lunr-languages": "^1.14.0",
     "mermaid": "^11.6.0",
     "next": "14.1.4",
     "path": "^0.12.7",
@@ -23,6 +26,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/lunr": "^2.3.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -74,6 +74,10 @@ body {
     font-weight: bolder;
     font-size: 150%;
   }
+
+  ul:not(:first-child) {
+    margin-top: 0.25rem;
+  }
 }
 
 
