@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development node create-npmrc.js && next dev -p 8325",
-    "build": "cross-env NODE_ENV=development node create-npmrc.js && yarn run cp && yarn run create-file && next build",
+    "custom-build": "cross-env NODE_ENV=production node create-npmrc.js && yarn run cp && yarn run create-file && next build",
     "start": "next start",
     "lint": "next lint",
     "create-file": "node create-search.js",
