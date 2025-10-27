@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8325",
-    "build": "yarn run cp && yarn run create-file && next build",
+    "dev": "cross-env NODE_ENV=development node create-npmrc.js && next dev -p 8325",
+    "build": "node create-npmrc.js && yarn run cp && yarn run create-file && next build",
     "start": "next start",
     "lint": "next lint",
     "create-file": "node create-search.js",
@@ -31,6 +31,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "cpx": "^1.5.0",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
     "typescript": "^5",
     "uuid": "^11.0.5"
   }
