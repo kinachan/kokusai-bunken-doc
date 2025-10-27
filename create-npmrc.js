@@ -4,12 +4,15 @@ const path = require('path');
 console.log(process.env.NODE_ENV);
 
 const isDev = process.env.NODE_ENV === 'development';
+const isVercel = process.env.VERCEL === '1';
+
 
 const source = fs.readFileSync('./.npmrc-source.txt', {encoding: 'utf-8'});
 
-if (!isDev) {
+if (!isVercel && !isDev) {
   fs.writeFileSync('./.npmrc', source, {encoding: 'utf-8'});
   console.log(`[LOG] Create .npmrc File by Production.`);
+  process.exit(0);
   return;
 }
 
