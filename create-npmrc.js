@@ -9,7 +9,6 @@ const source = fs.readFileSync('./.npmrc-source.txt', {encoding: 'utf-8'});
 if (!isVercel && !isDev) {
   fs.writeFileSync('./.npmrc', source, {encoding: 'utf-8'});
   console.log(`[LOG] Create .npmrc File by Production.`);
-  process.exit(0);
   return;
 }
 
