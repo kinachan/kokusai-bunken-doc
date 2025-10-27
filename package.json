@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "cross-env NODE_ENV=production node create-npmrc.js",
     "dev": "cross-env NODE_ENV=development node create-npmrc.js && next dev -p 8325",
     "build": "yarn run cp && yarn run create-file && next build",
     "start": "next start",
