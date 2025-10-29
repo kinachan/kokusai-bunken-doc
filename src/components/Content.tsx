@@ -47,6 +47,9 @@ export default function Content({content}: Partial<{content: string}>) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
+      <footer>
+        Copyright © 2025 Objective Core.
+      </footer>
     </>
   )
 

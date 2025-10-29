@@ -67,6 +67,9 @@ export default function Home({ fileNames }: { fileNames: string[] }) {
           }
         </ul>
       </section>
+      <footer>
+        Copyright © 2025 Objective Core.
+      </footer>
     </div>
   )
 }
