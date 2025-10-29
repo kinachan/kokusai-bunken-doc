@@ -13,6 +13,21 @@ export default function Content({ content }: Partial<PageProps>) {
 
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const isMaintenance = process.env.IS_MAINTENANCE === 'true';
+
+  if (isMaintenance) {
+    return {
+      props: {
+        fileNames: [],
+        isError: true,
+        title: '',
+        content: null,
+      }
+    }
+  }
+
+
+
   const query = decodeURI(context.query.slug as string);
   const fileNames = getFileName();
 
@@ -27,6 +42,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     }
   }
   const markdownFile = getFileContent(query);
+  
   if (markdownFile == null) {
     return {
       props: {
