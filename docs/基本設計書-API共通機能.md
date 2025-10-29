@@ -46,7 +46,14 @@ APIリクエストのセットアップを実施する
 
 **また学会利用者向けの機能については、Firebaseから発行されたIDトークンは存在しないため、Authenticationは外したものを使用する**
 
-//TODO: 同意書アップロードの機能もあるため、multipart/formdataの記載も必要
+Content-Typeが`multipart/formdata`の場合は以下のHttp Headerを採用する
+
+| カテゴリ | キー名称 | 値 | 備考 |
+| ---- | ---- | ---- | ---- |
+| HTTPメソッド | Method | 処理に応じて変更 |  |
+| HTTPヘッダー | Authentication | Bearer: + Firebaseから発行されたIDトークン | IDトークンはFirebaseの処理を介すると発行される |
+| HTTPヘッダー | Content-type | multipart/formdata |  |
+
 
 #### リクエスト送信
 

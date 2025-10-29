@@ -15,6 +15,13 @@ Google認可機能を用いて、安全かつデータベース上にパスワ�
 上記の機能を用いたフローや大まかの流れについては[基本設計書-学会管理者認証機能](基本設計書-学会管理者認証機能)に記載。
 
 
+### Firestore CloudStorage
+
+Firebaseのオブジェクトストレージの機能を用いて、同意書などの物理ファイルの保管を実施する
+
+機能の詳細については[こちら](https://firebase.google.com/docs/storage?hl=ja&_gl=1*2epkk5*_up*MQ..*_ga*MjAwNDM4MDk0Ny4xNzYxNjQyMjcy*_ga_CW55HF8NVT*czE3NjE2NDIyNzEkbzEkZzAkdDE3NjE2NDIyNzEkajYwJGwwJGgw)を参照
+
+
 
 ### Firestore Database
 
