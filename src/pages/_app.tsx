@@ -5,6 +5,7 @@ import '@/styles/index.scss';
 import Error from "./error";
 import Head from "next/head";
 import { genericSort } from "@kinachan/shirayuri/lib/array";
+import searchData from '../../search-data.json';
 
 export interface PageProps {
   fileNames: string[];
@@ -28,6 +29,8 @@ const App = ({ Component, pageProps: _PageProps }: AppProps) => {
   const moreNavi = (fileNames ?? []).filter(x => topNavi.some(t => t !== x));
 
   const topNaviGroups = topNavi.map(navName => (fileNames ?? []).filter(name => name.indexOf(navName) === 0));
+
+  const isDev = process.env.NEXT_PUBLIC_IS_DEV === '1';
 
 
   const navbarStart: (NavbarItem | LinkItem | NavElement)[] = [
@@ -61,7 +64,7 @@ const App = ({ Component, pageProps: _PageProps }: AppProps) => {
         dropdowns: group.sort(genericSort(item => item)).map(g => ({
           show: true,
           type: 'LinkItem',
-          label: g,
+          label: `${g}${isDev && searchData.find(x => x.title === g)?.content?.trim() !== '' ?  '✅' : ''}`,
           pathname: g,
         }))
       }

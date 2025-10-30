@@ -1,24 +1,43 @@
-import lunr from 'lunr';
+import elasticlunr from 'elasticlunr';
 import { NextApiRequest, NextApiResponse } from "next";
 import searchData from '../../../search-data.json';
-import * as lunrLanguages from 'lunr-languages';
+import kuromoji from 'kuromoji';
+import path from 'path';
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log(`[LOG] search: ${req.query.q}`);
 
-  const builder = new lunr.Builder();
-  lunr.tokenizer.separator = /[\s]+/;
+  const dictPath = path.resolve('./src/lib/kuromojidict');
 
-  builder.ref('id');
-  builder.field('titie');
-  builder.field('content');
+  const elasticLunr = elasticlunr();
+  elasticLunr.setRef('id' as never);
+  elasticLunr.addField('title'as never);
+  elasticLunr.addField('content'as never);
 
-  searchData.forEach((post) => builder.add(post));
+  kuromoji.builder({
+    dicPath: dictPath,
+  }).build((err, tokenizer) => {
+    if (err) throw err;
 
-  const index = builder.build();
+    searchData.forEach(doc => {
+      const contentTokens = tokenizer.tokenize(doc.content).map(t => t.surface_form).join(' ');
+      const titleTokens = tokenizer.tokenize(doc.title).map(t => t.surface_form).join(' ');
 
-  const results = index.search(req.query.q as string);
-  const searchResult = results.map(x => searchData.find(sd => sd.id === x.ref)!).filter(Boolean);
-  res.send(searchResult);
+      elasticLunr.addDoc({
+        id: doc.id,
+        title: titleTokens,
+        content: contentTokens,
+      });
+    });
+
+    const searchResults = elasticLunr.search(req.query.q as string, {
+      fields: {
+        content: {boost: 1},
+      }
+    });
+  
+    const results = searchResults.map(r => searchData.find(x => x.id === r.ref));
+    res.send(results);
+  });
 }
